@@ -1,6 +1,6 @@
 ﻿var chirperApp = {
     user: 'Huseyin',
-    fireBaseUrl: 'https://chirperhuseyin.firebaseio.com/',
+    fireBaseUrl: '{firebaseurl}',
     selectedMsg: '',
     friendsArray:[]
 }
