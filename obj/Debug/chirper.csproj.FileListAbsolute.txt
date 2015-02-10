@@ -1,0 +1,6 @@
+c:\users\huseyin\documents\visual studio 2013\Projects\chirper\chirper\bin\chirper.dll.config
+c:\users\huseyin\documents\visual studio 2013\Projects\chirper\chirper\bin\chirper.dll
+c:\users\huseyin\documents\visual studio 2013\Projects\chirper\chirper\bin\chirper.pdb
+c:\users\huseyin\documents\visual studio 2013\Projects\chirper\chirper\obj\Debug\chirper.csprojResolveAssemblyReference.cache
+c:\users\huseyin\documents\visual studio 2013\Projects\chirper\chirper\obj\Debug\chirper.dll
+c:\users\huseyin\documents\visual studio 2013\Projects\chirper\chirper\obj\Debug\chirper.pdb

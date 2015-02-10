@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="nav-stacked"></div>
+  
+        <div class="col-md-12 column">
+            <div class="col-md-8 column">
+                <h3 class="text-center">
+                   Chirper App with FireBase
+                </h3>
+           
+                
+            </div>
+        </div>
+
+            <div class="container">
+                <div class="row clearfix">
+                    <div class="col-md-12 column">
+                        <div class="tabbable" id="tabs-690587">
+                            <ul class="nav nav-tabs nav-tabs-justified">
+                                <li class="active">
+                                    <a href="#panel-51946" data-toggle="tab">Timeline</a>
+                                </li>
+                                <li>
+                                    <a href="#panel-chirper" data-toggle="tab">My Chirper</a>
+                                </li>
+                                <li>
+                                    <a href="#panel-profile" data-toggle="tab">Profile</a>
+                                </li>
+                                <li>
+                                    <a href="#panel-friends" data-toggle="tab">Friends</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="panel-51946">
+                                    
+                                    <br />
+                                    <div class="alert alert-dismissible alert-success">
+                                        <h3> Messages from All - TimeLine</h3>
+                                     
+                                        <br />
+                                        
+                                    </div>
+                                    <div id="timeLineTweets"></div>
+
+                                </div>
+                                <div class="tab-pane" id="panel-chirper">
+                                    <br />
+                                    <p>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">@</span>
+                                                <input type="text" id="newTweetInput" class="form-control">
+                                                <span class="input-group-btn">
+                                                    <button id="submitNewTweetBtn" class="btn btn-primary" type="button">New Tweet</button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </p>
+                                    <div class="alert alert-dismissible alert-success" >
+                                        <h3>Latest Messages from Huseyin</h3>
+                                        <p>Huseyin has <label id="messageCount"
+       class="label label-primary" style="margin-right:2px;"></label>    Messages</p>
+                                       <br />
+        
+                                    </div>
+                                    <div id="messageList"></div>
+                                   
+                                </div>
+                                <div class="tab-pane" id="panel-profile">
+                                   
+                                    <div class="row">
+                                        <div class="page-header">
+                                            <h1>
+                                             Huseyin's Profile 
+                                            </h1>
+                                        </div>
+                                        <div class="col-md-4">
+                                           
+
+                                            <div class="thumbnail">
+                                                <img id="myProfileImg" alt="Hsueyin img" style="width:110px; height:140px;" src="https://scontent-b-lga.xx.fbcdn.net/hphotos-prn2/v/t1.0-9/579637_602499703100790_1686694538_n.jpg?oh=b7532f1a27079e9c2803d2274b3e2cdb&oe=5505C9E6" />
+                                                <div class="caption">
+                                                    <h3 id="myProfileName">
+                                                        Huseyin Donmez
+                                                    </h3>
+                                                    <p id="myProfileLiving">
+                                                        Living in NJ                             </p>
+                                                    <p>
+                                                        <button id="updateMyProfileBtn" class="btn btn-primary">Update</button>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                                    </div>
+
+                                </div>
+                                <div class="tab-pane" id="panel-friends">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">@</span>
+                                            <input type="text" id="newFriendUrlInput" placeholder="Paste URL" class="form-control">
+                                            <span class="input-group-btn">
+                                                <button id="newFriendUrlBtn" class="btn btn-primary"
+                                                         type="button">New Friend</button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div id="friendList"></div>
+
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+
+    <div class="modal fade" id="updateModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">
+Update Message      <span id="updateTitleInfoLbl" class="label label-info">{ Id : </span>               </h4>
+                </div>
+                <div class="modal-body">
+               
+                     <div class="form-control">
+                         <input type="text" id="updateMessageInput" />
+                     </div>
+             
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                     <button type="button" id="updateMessageBtn" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="updateProfileModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        Update Profile 
+                    </h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <input placeholder="Name" class="form-control" type="text" id="updateMyNameInput" />
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Location" type="text" id="updateMyLocationInput" />
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" placeholder="New Img Url" type="text" id="updateMyImageInput" />
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="updateMyProfileClicked" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+            <script src="Scripts/jquery-2.1.1.min.js"></script>
+            <script src="Scripts/bootstrap.min.js"></script>
+            <script src="script.js"></script>
+            <script src="Scripts/DateTimeScript.js"></script>
+             <script>
+                 $(document).ready(function () {
+                     chirperApp.startApp();
+
+                 
+
+                     $('#submitNewTweetBtn').click(function () {
+                         chirperApp.addNewMessage();
+                     });
+                     $('#newFriendUrlBtn').click(function () {
+                         chirperApp.addNewFriend();
+                     })
+
+                     $('#updateMyProfileBtn').click(function () {
+                         $('#updateProfileModal').modal();
+                      });
+                      
+                     $('#updateMyProfileClicked').click(function () {
+
+                         chirperApp.updateMyProfile();
+                     })
+                                             
+                 //    var n = {
+                 //        name: 'Huseyin',
+                 //        location: 'New Jersey',
+                 //        photo: 'https://scontent-b-lga.xx.fbcdn.net/hphotos-prn2/v/t1.0-9/579637_602499703100790_1686694538_n.jpg?oh=b7532f1a27079e9c2803d2274b3e2cdb&oe=5505C9E6'
+                 //    }
+                 //    var n ={ "message":"test 2","timestamp":new Date(),"user":"Louis"}
+                 //    $.ajax({
+                 //        method: 'POST',
+                 //        url: 'https://chirperhuseyin.firebaseio.com/tweets/.json',
+                 //        data:JSON.stringify(n)
+                 //}).done(function () {
+                 //    alert('added');
+                 //})
+                 })
+             </script>
+</body>
+</html>
